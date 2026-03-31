@@ -4,10 +4,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" type="text/css" href="https://tdce.kontakt.tdc.dk/css/form.css?ver=2021-09-20">
-<link rel="icon"
-  href="https://image.email.tdc.dk/lib/fe2c11737364047b751c77/m/1/7a665e3c-6a3f-4b1f-8e35-772b6ca17c14.png"
-  type="image/x-icon" />
+<link rel="icon" href="https://image.email.tdc.dk/lib/fe2c11737364047b751c77/m/1/7a665e3c-6a3f-4b1f-8e35-772b6ca17c14.png" type="image/x-icon" />
+  <!-- ========================= -->
+  <!--  SALESFORCE AGENT SCRIPT  -->
+  <!-- ========================= -->
+  <script type='text/javascript'>
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = 'en_US';
 
+        embeddedservice_bootstrap.init(
+          '00DUD000008uiWS',
+          'Campaign_Events_Support_Agent_Channel',
+          'https://tdcerhverv--maagent.sandbox.my.site.com/ESWCampaignEventsSuppor1774951808146',
+          {
+            scrt2URL: 'https://tdcerhverv--maagent.sandbox.my.salesforce-scrt.com'
+          }
+        );
+      } catch (err) {
+        console.error('Error loading Embedded Messaging: ', err);
+      }
+    }
+  </script>
+
+  <script type='text/javascript'
+    src='https://tdcerhverv--maagent.sandbox.my.site.com/ESWCampaignEventsSuppor1774951808146/assets/js/bootstrap.min.js'
+    onload='initEmbeddedMessaging()'>
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  
 <header>
 <body>
     <!-- ========================= -->
