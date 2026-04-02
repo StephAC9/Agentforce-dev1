@@ -109,8 +109,33 @@
 					'https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794',
 					{
 						scrt2URL: 'https://tdcerhverv--maagent.sandbox.my.salesforce-scrt.com'
-					}
-				);
+					},
+					uiConfiguration: {
+		            header: {
+		                logoUrl: "https://image.email.tdc.dk/lib/fe2c11737364047b751c77/m/1/f8ea3e66-fdeb-40f9-851b-3b28bb673fd0.png",
+		                titleText: "Support Agent"
+		            },
+		            theme: {
+		                colorPrimary: "#0044FF",
+		                colorSecondary: "#EEF4FF",
+		                fontFamily: "Inter, sans-serif",
+		                borderRadius: "14px"
+		            },
+		            layout: {
+		                width: "20vw",
+		                maxWidth: "300px",
+		                fullHeight: true
+		            },
+		            typingIndicator: {
+		                enabled: true,
+		                animationStyle: "dots"
+		            },
+		            eventPanel: {
+		                animation: "slide",
+		                backgroundBlur: true
+		            }
+		        }
+			);
 			} catch (err) {
 				console.error('Error loading Embedded Messaging: ', err);
 			}
