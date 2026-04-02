@@ -192,43 +192,50 @@
       <!-- ========================= -->
 	  <!--  SALESFORCE AGENT SCRIPT  -->
 	  <!-- ========================= -->
-	  <script
-		  	type="text/javascript"
-		   	id='init-agentforce-messaging' 
-             src='https://test-service.force.com/embeddedservice/agentforcemessaging/0.3/init.js' 
-             onload='agentforce_messaging.init({
-				siteUrl: "https://tdcerhverv--maagent.sandbox.my.site.com/AFMSupportAgent1775135648792",
-				agentApiConfiguration: {
-					agentId: "0XxUD0000000rvZ0AQ", 
-					domainUrl: "https://tdcerhverv--maagent.sandbox.my.salesforce.com"
-				},
-				uiConfiguration: {
-					theme: {
-						colorPrimary: "#0044FF",
-						colorSecondary: "#EEF4FF",
-						fontFamily: "Inter, sans-serif",
-						borderRadius: "14px"
-					},
-					layout: {
-						width: "20vw",
-						maxWidth: "300px",
-						fullHeight: true
-					},
-					header: {
-						logoUrl: "/resource/company_logo",
-						showTitle: true,
-						titleText: "Event Support"
-					},
-					typingIndicator: {
-						enabled: true,
-						animationStyle: "dots"
-					},
-					eventPanel: {
-						animation: "slide",
-						backgroundBlur: true
-					}
-				}
-		  });'>
+	  <!-- ✅ Agentforce Messaging Runtime (REQUIRED for UI to render) -->
+		<script 
+		    type="text/javascript" 
+		    src="https://test-service.force.com/embeddedservice/agentforcemessaging/0.3/messagingClient.js">
+		</script>
+		
+		<!-- ✅ Agentforce Messaging Bootstrap + Initialization -->
+		<script
+		    type="text/javascript"
+		    id="init-agentforce-messaging"
+		    src="https://test-service.force.com/embeddedservice/agentforcemessaging/0.3/init.js"
+		    onload='agentforce_messaging.init({
+		        siteUrl: "https://tdcerhverv--maagent.sandbox.my.site.com/AFMSupportAgent1775135648792",
+		        agentApiConfiguration: {
+		            agentId: "0XxUD0000000rvZ0AQ",
+		            domainUrl: "https://tdcerhverv--maagent.sandbox.my.salesforce.com"
+		        },
+		        uiConfiguration: {
+		            theme: {
+		                colorPrimary: "#0044FF",
+		                colorSecondary: "#EEF4FF",
+		                fontFamily: "Inter, sans-serif",
+		                borderRadius: "14px"
+		            },
+		            layout: {
+		                width: "20vw",
+		                maxWidth: "300px",
+		                fullHeight: true
+		            },
+		            header: {
+		                logoUrl: "/resource/company_logo",
+		                showTitle: true,
+		                titleText: "Event Support"
+		            },
+		            typingIndicator: {
+		                enabled: true,
+		                animationStyle: "dots"
+		            },
+		            eventPanel: {
+		                animation: "slide",
+		                backgroundBlur: true
+		            }
+		        }
+		    });'>
 		</script>
 
       </body>
