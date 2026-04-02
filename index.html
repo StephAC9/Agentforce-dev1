@@ -98,16 +98,37 @@
         </div>
           </div>
       </div>
+
+		<script type='text/javascript'>
+		function initEmbeddedMessaging() {
+			try {
+				embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+	
+				embeddedservice_bootstrap.init(
+					'00DUD000008uiWS',
+					'Event_Support_Agent_Messaging_Setting',
+					'https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794',
+					{
+						scrt2URL: 'https://tdcerhverv--maagent.sandbox.my.salesforce-scrt.com'
+					}
+				);
+			} catch (err) {
+				console.error('Error loading Embedded Messaging: ', err);
+			}
+		};
+	</script>
+	<script type='text/javascript' src='https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
       <!-- ========================= -->
 	  <!--  SALESFORCE AGENT SCRIPT  -->
 	  <!-- ========================= -->
-	  <!-- ✅ Agentforce Messaging Runtime (REQUIRED for UI to render) -->
+	  <!-- ✅ Agentforce Messaging Runtime (REQUIRED for UI to render) 
 		<script 
 		    type="text/javascript" 
 		    src="https://test-service.force.com/embeddedservice/agentforcemessaging/0.3/messagingClient.js">
-		</script>
+		</script>-->
 		
-		<!-- ✅ Agentforce Messaging Bootstrap + Initialization -->
+		<!-- 
 		<script
 		    type="text/javascript"
 		    id="init-agentforce-messaging"
@@ -145,7 +166,7 @@
 		            }
 		        }
 		    });'>
-		</script>
+		</script>-->
 
       </body>
 </html>
