@@ -213,7 +213,7 @@
 		<!-- ===============================
 		     SALESFORCE EMBEDDED AGENT
 		     =============================== -->
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 		  function initEmbeddedMessaging() {
 		    try {
 		      embeddedservice_bootstrap.settings.language = "en_US";
@@ -233,14 +233,29 @@
 		      console.error("Error loading Embedded Messaging:", err);
 		    }
 		  }
+		</script>-->
+
+		<script type='text/javascript'>
+			function initEmbeddedMessaging() {
+				try {
+					embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+		
+					embeddedservice_bootstrap.init(
+						'00DUD000008uiWS',
+						'Web_Support_Agent',
+						'https://tdcerhverv--maagent.sandbox.my.site.com/ESWWebSupportAgent1775715108618',
+						{
+							scrt2URL: 'https://tdcerhverv--maagent.sandbox.my.salesforce-scrt.com',
+		          			targetElement: document.getElementById("agentforce-chat-root")
+						}
+					);
+				} catch (err) {
+					console.error('Error loading Embedded Messaging: ', err);
+				}
+			};
 		</script>
-		
-		<script
-		  type="text/javascript"
-		  src="https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794/assets/js/bootstrap.min.js"
-		  onload="initEmbeddedMessaging()"
-		></script>
-		
+		<script type='text/javascript' src='https://tdcerhverv--maagent.sandbox.my.site.com/ESWWebSupportAgent1775715108618/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 		
 		<!-- ===============================
 		     REACT OVERLAY BUNDLE
