@@ -12,49 +12,51 @@
        BASE LAYOUT STYLES
        =============================== -->
   
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
 
-    /* Split layout */
-    #agentforce-layout {
-      display: flex;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
+  /* Split layout */
+  #agentforce-layout {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-    /* LEFT: Event Overlay */
-    #event-overlay-root {
-      width: 70%;
-      background: #f8fafc;
-      border-right: 1px solid #e5e7eb;
-      overflow-y: auto;
-      padding: 32px;
+  /* LEFT: Event Overlay */
+  #event-overlay-root {
+    width: 70%;
+    background: #f8fafc;
+    border-right: 1px solid #e5e7eb;
+    overflow-y: auto;
+    padding: 32px;
 
-      /* Visibility system (ONE ONLY) */
-      transform: translateX(-100%);
-      opacity: 0;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
+    /* Visibility system (ONE ONLY) */
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
 
-    #event-overlay-root.visible {
-      transform: translateX(0);
-      opacity: 1;
-    }
+  #event-overlay-root.visible {
+    transform: translateX(0);
+    opacity: 1;
+  }
 
-    /* RIGHT: Agentforce chat */
-    #agentforce-chat-root {
-      width: 30%;
-      min-width: 380px;
-      border-left: 1px solid #e5e7eb;
-    }
+  /* RIGHT: Agentforce chat */
+  #agentforce-chat-root {
+    width: 30%;
+    min-width: 380px;
+    border-left: 1px solid #e5e7eb;
+  }
+</style>
 
-    .event-card {
+<style>
+.event-card {
   background: #ffffff !important;
   border: 1px solid #e5e7eb !important;
   border-radius: 10px !important;
@@ -208,24 +210,10 @@
   <!-- ===============================
        REACT EVENT OVERLAY (JS ONLY)
        =============================== -->
-  <!--<script
-    type="module"
-    src="https://tdc-campaign-event-overlay.netlify.app/assets/style-CAEOvcEj.css">
-  </script>-->
-
   <script
     type="module"
     src="https://tdc-campaign-event-overlay.netlify.app/assets/index-BooJEM-Q.js">
   </script>
 
-  <!-- ===============================
-       OPTIONAL: AUTO-SHOW OVERLAY
-       =============================== -->
-  <script>
-    // Remove if you want chat-only by default
-    document
-      .getElementById("event-overlay-root")
-      ?.classList.add("visible");
-  </script>
 </body>
 </html>
