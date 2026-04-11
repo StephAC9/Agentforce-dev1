@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!--<link rel="stylesheet" type="text/css" href="https://tdce.kontakt.tdc.dk/css/form.css?ver=2021-09-20">-->
-<link rel="icon" href="https://image.email.tdc.dk/lib/fe2c11737364047b751c77/m/1/7a665e3c-6a3f-4b1f-8e35-772b6ca17c14.png" type="image/x-icon" />
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1"
+  />
+  <title>Agentforce Event Overlay</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-
-<!-- ===============================
-       LAYOUT & OVERLAY STYLES
+  <!-- ===============================
+       BASE LAYOUT STYLES
        =============================== -->
   <style>
     html, body {
@@ -19,7 +19,7 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Main split layout */
+    /* Split layout */
     #agentforce-layout {
       display: flex;
       width: 100vw;
@@ -27,29 +27,23 @@
       overflow: hidden;
     }
 
-    /* LEFT: React overlay */
+    /* LEFT: Event Overlay */
     #event-overlay-root {
       width: 70%;
       background: #f8fafc;
       border-right: 1px solid #e5e7eb;
       overflow-y: auto;
       padding: 32px;
-      display: none; /* hidden by default */
+
+      /* Visibility system (ONE ONLY) */
+      transform: translateX(-100%);
+      opacity: 0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
     #event-overlay-root.visible {
-      display: block;
-    }
-
-    /* Header inside overlay */
-    .event-overlay-header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
-
-    .event-overlay-header p {
-      margin-top: 6px;
-      color: #64748b;
+      transform: translateX(0);
+      opacity: 1;
     }
 
     /* RIGHT: Agentforce chat */
@@ -59,193 +53,64 @@
       border-left: 1px solid #e5e7eb;
     }
   </style>
+</head>
 
-	<style>
-  /* Overlay header with close button */
-  .event-overlay-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-  }
-
-  .event-overlay-header h1 {
-    margin: 0;
-    font-size: 22px;
-  }
-
-  .event-overlay-header p {
-    margin: 6px 0 0;
-    color: #64748b;
-  }
-
-  .overlay-close-btn {
-    background: transparent;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: #64748b;
-    padding: 4px 8px;
-  }
-
-  .overlay-close-btn:hover {
-    color: #0f172a;
-  }
-
-#event-overlay-root {
-  transition: transform 0.25s ease, opacity 0.25s ease;
-}
-
-#event-overlay-root.hidden {
-  transform: translateX(-100%);
-  opacity: 0;
-  display: block;
-}
-
-#event-overlay-root.visible {
-  transform: translateX(0);
-  opacity: 1;
-}
-``
-</style>
-
-  
-<header>
 <body>
-    <div class="layout layout-canvas-g">
-      <div class="wrapper version-2">
-        <header>
-          <div >
-            <nav class="navbar navbar-expand-lg ">
-              <div class="container">
-                <a class="navbar-brand" href="https://tdc.dk/" target="_top"><img src="https://image.email.tdc.dk/lib/fe2c11737364047b751c77/m/1/f8ea3e66-fdeb-40f9-851b-3b28bb673fd0.png" style="width: 150px;"/></a>
-              </div>
-            </nav>
-          </div>
-        </header>
-        <section class="hero-sec">
-          <div class="container">
-            <div class="row">
-              <div class="col-xl-7 col-lg-6">
-                <div class="text-box">
-                  <h6>        
-                    <div class="columns col1">
-                      <div data-type="slot" data-key="ipzko6zrqx">
-                      </div>
-                    </div>
-                  </h6>
-                  <h2>        
-                    <div class="columns col1">
-                      <div data-type="slot" data-key="jrwzq1gxvor">
-                      </div>
-                    </div>
-                  </h2>
-                  <div class="columns col1">
-                    <div data-type="slot" data-key="c6k3s6sdxlt">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <style>
-                #pardot-form {
-                  width: 40%;
-                }
-                @media(max-width: 1200px) {
-                  #pardot-form {
-                    width: 45%;
-                  }
-                }
-                @media(max-width: 991px) {
-                  #pardot-form {
-                    width: unset;
-                  }
-                }
-                .text-box{
-                  min-height:1px;
-                }
-                .hero-sec{
-                  min-height: 692px;
-                  height:auto;
-                }
-              </style>
-              <div class="col-xl-5 col-lg-6 form-container" style="position:relative;">
-                <div class="columns col1 form" style="position: absolute; max-width: 500px;">
-                  <div data-type="slot" data-key="bzfpbeh01c">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <div id="content">
-          <section class="form-sec">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-6 col-md-9">
-                  <div class="text-box">
-                    <!-- The closing tag for this section is missing -->
-                    <div class="columns col1">
-                      <div data-type="slot" data-key="s1a79530ac">
-                      </div>
-                    </div>
-                    <div class="columns col1">
-                      <div data-type="slot" data-key="xg2jvgtuhcb">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-          </div>
-      </div>
-	
-		<!-- ===============================
-		     MAIN SPLIT CONTAINER
-		     =============================== -->
-		<div id="agentforce-layout">
-		  <div id="event-overlay-root" class="event-overlay hidden"></div>
-		  <div id="agentforce-chat-root"></div>
-		</div>
-		
-		
-		<!-- ===============================
-		     SALESFORCE EMBEDDED AGENT
-		     =============================== -->
-		<script type="text/javascript">
-		  function initEmbeddedMessaging() {
-		    try {
-		      embeddedservice_bootstrap.settings.language = "en_US";
-		
-		      embeddedservice_bootstrap.init(
-		        "00DUD000008uiWS",
-		        "Event_Support_Agent_Messaging_Setting",
-		        "https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794",
-		        {
-		          scrt2URL:
-		            "https://tdcerhverv--maagent.sandbox.my.salesforce-scrt.com",
-		          targetElement:
-		            document.getElementById("agentforce-chat-root")
-		        }
-		      );
-		    } catch (err) {
-		      console.error("Error loading Embedded Messaging:", err);
-		    }
-		  }
-		</script>
-		<script type='text/javascript' src='https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  <!-- ===============================
+       MAIN CONTAINER
+       =============================== -->
+  <div id="agentforce-layout">
+    <div id="event-overlay-root"></div>
+    <div id="agentforce-chat-root"></div>
+  </div>
 
+  <!-- ===============================
+       AGENTFORCE EMBEDDED CHAT
+       =============================== -->
+  <script type="text/javascript">
+    function initEmbeddedMessaging() {
+      try {
+        embeddedservice_bootstrap.settings.language = "en_US";
 
-		
-		<!-- ===============================
-		     REACT OVERLAY BUNDLE
-		     =============================== -->
-		<!-- Local dev -->
-		<script
-		  type="module"
-		  src="https://tdc-campaign-event-overlay.netlify.app/assets/index-BooJEM-Q.js">
-		</script>
-	
-   </body>
+        embeddedservice_bootstrap.init(
+          "00DUD000008uiWS",
+          "Event_Support_Agent_Messaging_Setting",
+          "https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794",
+          {
+            scrt2URL:
+              "https://tdcerhverv--maagent.sandbox.my.salesforce-scrt.com",
+            targetElement:
+              document.getElementById("agentforce-chat-root"),
+          }
+        );
+      } catch (err) {
+        console.error("Error loading Embedded Messaging:", err);
+      }
+    }
+  </script>
+
+  <script
+    type="text/javascript"
+    src="https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794/assets/js/bootstrap.min.js"
+    onload="initEmbeddedMessaging()">
+  </script>
+
+  <!-- ===============================
+       REACT EVENT OVERLAY (JS ONLY)
+       =============================== -->
+  <script
+    type="module"
+    src="https://tdc-campaign-event-overlay.netlify.app/assets/index-XXXX.js">
+  </script>
+
+  <!-- ===============================
+       OPTIONAL: AUTO-SHOW OVERLAY
+       =============================== -->
+  <script>
+    // Remove if you want chat-only by default
+    document
+      .getElementById("event-overlay-root")
+      ?.classList.add("visible");
+  </script>
+</body>
 </html>
