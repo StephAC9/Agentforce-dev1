@@ -7526,15 +7526,13 @@
       }
     </style>
      <style>
-        /* =========================================================
-   AGENTFORCE – GLOBAL CONSTANTS
-========================================================= */
 /* =========================================================
    AGENTFORCE – GLOBAL CONSTANTS
 ========================================================= */
 :root {
   --agentforce-chat-width: 380px;
   --agentforce-gap: 16px;
+  --embedded-messaging-width: 380px;
 }
 
 /* =========================================================
@@ -7563,7 +7561,7 @@
 }
 
 #embedded-messaging {
-  max-width: 380px;
+  max-width: 30vW;
   z-index: 9999;
 }
 
@@ -7577,7 +7575,7 @@
   bottom: 0;
 
   /* ✅ Never reach the chat */
-  width: calc(100vw - var(--agentforce-chat-width));
+  width: calc(100vw - var(--embedded-messaging-width));
   max-width: 70vw; /* ✅ hard cap at 70% */
 
   padding: 32px;
