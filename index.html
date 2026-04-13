@@ -1,212 +1,3 @@
-<!--<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1"
-  />
-  <title>Agentforce Event Overlay</title>
-
-  
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-
-  /* Split layout */
-  #agentforce-layout {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  /* LEFT: Event Overlay */
-  #event-overlay-root {
-    width: 70%;
-    background: #f8fafc;
-    border-right: 1px solid #e5e7eb;
-    overflow-y: auto;
-    padding: 32px;
-
-    /* Visibility system (ONE ONLY) */
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-  }
-
-  #event-overlay-root.visible {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  /* RIGHT: Agentforce chat */
-  #agentforce-chat-root {
-    width: 30%;
-    min-width: 380px;
-    border-left: 1px solid #e5e7eb;
-  }
-</style>
-
-<style>
-.event-card {
-  background: #ffffff !important;
-  border: 1px solid #e5e7eb !important;
-  border-radius: 10px !important;
-  padding: 16px !important;
-  margin-bottom: 14px !important;
-}
-
-.event-logo {
-  width: 28px !important;
-  height: 28px !important;
-  max-width: 28px !important;
-  max-height: 28px !important;
-  object-fit: contain !important;
-  display: block !important;
-  flex-shrink: 0 !important;
-}
-
-.event-card-past {
-  opacity: 0.55;
-  background: #f9fafb;
-  border: 1px solid #e5e7eb !important;
-  border-radius: 10px !important;
-  padding: 16px !important;
-  margin-bottom: 14px !important;
-}
-
-.event-card-header {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.event-title-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-
-.event-title {
-  font-size: 15px;
-  font-weight: 600;
-  color: #111827;
-  margin: 0;
-}
-
-.event-badges {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.badge {
-  font-size: 11px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-weight: 500;
-}
-
-.badge-category {
-  background: #eef2ff;
-  color: #4338ca;
-}
-
-.badge-upcoming {
-  background: #e0f2fe;
-  color: #0369a1;
-}
-
-.badge-ongoing {
-  background: #dcfce7;
-  color: #166534;
-}
-
-.badge-past {
-  background: #f3f4f6;
-  color: #6b7280;
-}
-
-.badge-countdown {
-  background: #fff7ed;
-  color: #9a3412;
-}
-
-.event-description {
-  font-size: 13px;
-  color: #4b5563;
-  margin: 10px 0 12px;
-}
-
-.event-meta {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px 16px;
-}
-
-.meta-row {
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-  color: #374151;
-}
-
-.meta-icon {
-  width: 18px;
-  opacity: 0.7;
-}
-  </style>
-</head>
-
-<body>
-
-  <div id="agentforce-layout">
-    <div id="event-overlay-root"></div>
-    <div id="agentforce-chat-root"></div>
-  </div>
-
-  <script type="text/javascript">
-    function initEmbeddedMessaging() {
-      try {
-        embeddedservice_bootstrap.settings.language = "en_US";
-
-        embeddedservice_bootstrap.init(
-          "00DUD000008uiWS",
-          "Event_Support_Agent_Messaging_Setting",
-          "https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794",
-          {
-            scrt2URL:
-              "https://tdcerhverv--maagent.sandbox.my.salesforce-scrt.com",
-            targetElement:
-              document.getElementById("agentforce-chat-root"),
-          }
-        );
-      } catch (err) {
-        console.error("Error loading Embedded Messaging:", err);
-      }
-    }
-  </script>
-
-  <script
-    type="text/javascript"
-    src="https://tdcerhverv--maagent.sandbox.my.site.com/ESWEventSupportAgentMe1775123382794/assets/js/bootstrap.min.js"
-    onload="initEmbeddedMessaging()">
-  </script>
-
-  <script
-    type="module"
-    src="https://tdc-campaign-event-overlay.netlify.app/assets/index-BlRFtJSn.js">
-  </script>
-
-</body>
-</html>-->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -7738,14 +7529,16 @@
         /* =========================================================
    AGENTFORCE – GLOBAL CONSTANTS
 ========================================================= */
+/* =========================================================
+   AGENTFORCE – GLOBAL CONSTANTS
+========================================================= */
 :root {
   --agentforce-chat-width: 380px;
   --agentforce-gap: 16px;
-  --embedded-messaging-width: 380px
 }
 
 /* =========================================================
-   AGENT CHAT – FIXED, FLOATING, NEVER COVERED
+   AGENT CHAT – FIXED, FLOATING, ALWAYS VISIBLE
 ========================================================= */
 #agentforce-chat-root {
   position: fixed;
@@ -7765,13 +7558,12 @@
   pointer-events: auto;
 }
 
-/* Safety: avoid inherited layout issues */
 #agentforce-chat-root * {
   box-sizing: border-box;
 }
 
 /* =========================================================
-   EVENT OVERLAY – STOPS BEFORE CHAT (NEVER COVERS IT)
+   EVENT OVERLAY – STOPS BEFORE CHAT + MAX 70%
 ========================================================= */
 #event-overlay-root {
   position: fixed;
@@ -7779,8 +7571,9 @@
   left: 0;
   bottom: 0;
 
-  width: calc(100vw - var(--embedded-messaging-width));
-  max-width: calc(100vw - var(--embedded-messaging-width));
+  /* ✅ Never reach the chat */
+  width: calc(100vw - var(--agentforce-chat-width));
+  max-width: 70vw; /* ✅ hard cap at 70% */
 
   padding: 32px;
   overflow-y: auto;
@@ -7796,7 +7589,7 @@
     transform 0.25s ease,
     opacity 0.25s ease;
 
-  z-index: 9999; /* always below chat */
+  z-index: 9999;
 }
 
 #event-overlay-root.visible {
@@ -7833,7 +7626,7 @@
 }
 
 /* =========================================================
-   SAFE-AREA SUPPORT (iOS)
+   SAFE AREA SUPPORT (iOS)
 ========================================================= */
 @supports (padding: env(safe-area-inset-bottom)) {
   #agentforce-chat-root {
