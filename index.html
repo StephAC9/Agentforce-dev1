@@ -7735,54 +7735,100 @@
       }
     </style>
      <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  }
+        /* ========================================
+         AGENTFORCE – CHAT CONTAINER
+         Floating, transparent, non-intrusive
+      ======================================== */
+      
+      #agentforce-chat-root {
+        position: fixed;          /* ✅ remove from page flow */
+        bottom: 16px;             /* ✅ pinned to bottom */
+        right: 16px;              /* ✅ pinned to right */
+      
+        width: 380px;
+        max-width: calc(100vw - 32px);
+        height: auto;             /* ✅ Salesforce controls height */
+      
+        background: transparent;  /* ✅ page visible behind */
+        border: none;
+        padding: 0;
+        margin: 0;
+      
+        z-index: 10000;           /* ✅ above site */
+        pointer-events: auto;     /* ✅ fully interactive */
+      }
+      
+      /* Prevent any inherited layout rules */
+      #agentforce-chat-root * {
+        box-sizing: border-box;
+      }
+      
+      /* ========================================
+         EVENT OVERLAY – FULL PAGE COVER
+      ======================================== */
+      
+      #event-overlay-root {
+        position: fixed;
+        inset: 0;                 /* ✅ full viewport */
+        padding: 32px;
+      
+        background: #f8fafc;
+        overflow-y: auto;
+      
+        transform: translateX(-100%);
+        opacity: 0;
+        pointer-events: none;
+      
+        transition:
+          transform 0.25s ease,
+          opacity 0.25s ease;
+      
+        z-index: 9999;            /* ✅ below chat */
+      }
+      
+      #event-overlay-root.visible {
+        transform: translateX(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      
+      /* ========================================
+         MOBILE RESPONSIVENESS
+      ======================================== */
+      
+      @media (max-width: 768px) {
+      
+        /* Chat becomes fullscreen modal */
+        #agentforce-chat-root {
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+      
+          width: 100vw;
+          height: 100dvh;         /* ✅ modern mobile viewport */
+      
+          max-width: none;
+          border-radius: 0;
+        }
+      
+        /* Overlay padding reduced for mobile */
+        #event-overlay-root {
+          padding: 16px;
+        }
+      }
+      
+      /* ========================================
+         OPTIONAL: SAFE AREA SUPPORT (iOS)
+      ======================================== */
+      
+      @supports (padding: env(safe-area-inset-bottom)) {
+        #agentforce-chat-root {
+          padding-bottom: env(safe-area-inset-bottom);
+          padding-right: env(safe-area-inset-right);
+        }
+      }
 
-  /* PORTAL ROOT — does NOT affect page layout */
-#agentforce-portal {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none; /* important */
-}
-
-/* EVENT OVERLAY — covers page when visible */
-#event-overlay-root {
-  position: absolute;
-  inset: 0;
-  background: #f8fafc;
-  overflow-y: auto;
-  padding: 32px;
-
-  transform: translateX(-100%);
-  opacity: 0;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-
-  pointer-events: auto; /* interactive when shown */
-}
-
-#event-overlay-root.visible {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-/* AGENT CHAT — fixed panel on the right */
-#agentforce-chat-root {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 380px;
-  max-width: 100%;
-  height: 100%;
-  border-left: 1px solid #e5e7eb;
-  background: #ffffff;
-
-  pointer-events: auto;
-}
 </style>
 
 <style>
@@ -7911,10 +7957,10 @@
         </header>
         
         
-        <div id="agentforce-layout">
+        <!--<div id="agentforce-layout">
           <div id="event-overlay-root"></div>
           <div id="agentforce-chat-root"></div>
-        </div>
+        </div>-->
 
         <script type="text/javascript">
           function initEmbeddedMessaging() {
@@ -8120,6 +8166,9 @@
             </footer>
           </div>
       </div>
+
+    <div id="event-overlay-root"></div>
+          <div id="agentforce-chat-root"></div>
       </body>
     </html>
 
